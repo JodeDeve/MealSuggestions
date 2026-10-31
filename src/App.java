@@ -4,8 +4,9 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
 
+        // ARRAYS
         // Array that stores the ingredients entered by the user
         String[] ingredients = new String[20];
         int count = 0;
@@ -40,4 +41,5 @@ public class App {
         }
 
     }
+}
 }
