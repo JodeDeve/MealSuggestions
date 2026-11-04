@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Test {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
 
         String[] ingredients = { "Rice", "Egg", "Garlic", "Onion", "Noodles", "Tuna", "Sardines", "Chicken",
                 "Soy Sauce", "Vinegar", "Potato", "Corned Beef", "Eggplant", "Bread", "Pasta", "Bay Leaves",
@@ -24,28 +24,22 @@ public class Test {
                 { "Bread", "Egg" } // Egg Sandwich
         };
         String[] recipe = {
-                "1. Cook rice and let it cool.\n2. Heat oil in a pan and sauté garlic and onion.\n3. Add the cooled rice and stir-fry.\n4. Add beaten eggs and cook until done.\n5. Season with salt and pepper.", // Egg
-                                                                                                                                                                                                                // Fried
-                                                                                                                                                                                                                   // Rice
-                "1. Cook rice and let it cool.\n2. Heat oil in a pan and sauté garlic.\n3. Add the cooled rice and stir-fry.\n4. Season with salt and pepper.", // Garlic
-                                                                                                                                                                // Fried
-                                                                                                                                                                // Rice
-                "1. Boil pasta until al dente.\n2. Drain and set aside.\n3. In a pan, heat oil and sauté garlic.\n4. Add tuna and cook for a few minutes.\n5. Add the cooked pasta and mix well.\n6. Season with salt, pepper, and optional herbs.", // Tuna
-                                                                                                                                                                                                                                                     // Pasta
-                "1. Marinate chicken with soy sauce, vinegar, garlic, and bay leaves.\n2. Heat oil in a pan and brown the chicken.\n3. Pour in the marinade and simmer until chicken is cooked through.", // Chicken
-                                                                                                                                                                                                          // Adobo
-                "1. Heat oil in a pan and sauté garlic.\n2. Add sardines and cook for a few minutes.\n3. Serve with steamed rice.", // Sardines
-                                                                                                                                    // with
-                                                                                                                                    // Rice
-                "1. Slice eggplant thinly.\n2. Beat eggs in a bowl.\n3. Dip eggplant slices in beaten eggs.\n4. Fry until golden brown.", // Eggplant
-                                                                                                                                          // Omelette
-                "1. Heat oil in a pan and sauté garlic and onion.\n2. Add corned beef and cook until heated through.", // Corned
-                                                                                                                       // Beef
-                                                                                                                       // Hash
-                "1. Peel and chop potatoes into cubes.\n2. Boil potatoes until tender.\n3. Mash potatoes or leave them chunky as desired.\n4. Season with salt, pepper, and optional herbs.", // Potato
-                                                                                                                                                                                              // Soup
-                "1. Toast bread slices.\n2. Fry or scramble eggs as desired.\n3. Assemble sandwich with eggs between toasted bread slices." }; // Egg
-                                                                                                                                               // Sandwich
+                "1. Cook rice and let it cool.\n2. Heat oil in a pan and sauté garlic and onion.\n3. Add the cooled rice and stir-fry.\n4. Add beaten eggs and cook until done.\n5. Season with salt and pepper.", // Egg Fried Rice
+                                                                                                                                                                                                                                                                                                                                                         
+                "1. Boil pasta until al dente.\n2. Drain and set aside.\n3. In a pan, heat oil and sauté garlic.\n4. Add tuna and cook for a few minutes.\n5. Add the cooked pasta and mix well.\n6. Season with salt, pepper, and optional herbs.", // Tuna Pasta
+                                                                                                                                                                                                                                                    
+                "1. Marinate chicken with soy sauce, vinegar, garlic, and bay leaves.\n2. Heat oil in a pan and brown the chicken.\n3. Pour in the marinade and simmer until chicken is cooked through.", // Chicken Adobo
+                                                                                                                                                                                                        
+                "1. Heat oil in a pan and sauté garlic.\n2. Add sardines and cook for a few minutes.\n3. Serve with steamed rice.", // Sardines With Rice
+                                                                                                                                  
+                "1. Slice eggplant thinly.\n2. Beat eggs in a bowl.\n3. Dip eggplant slices in beaten eggs.\n4. Fry until golden brown.", // Eggplant Omelette
+                                                                                                                                         
+                "1. Heat oil in a pan and sauté garlic and onion.\n2. Add corned beef and cook until heated through.", // Corned Beef Hash
+                                                                                                                      
+                "1. Peel and chop potatoes into cubes.\n2. Boil potatoes until tender.\n3. Mash potatoes or leave them chunky as desired.\n4. Season with salt, pepper, and optional herbs.", // Potato Soup
+                                                                                                                                                                                            
+                "1. Toast bread slices.\n2. Fry or scramble eggs as desired.\n3. Assemble sandwich with eggs between toasted bread slices." }; // Egg Sandwich
+                                                                                                                                              
 
         String[] userIngredients = new String[20];
         int count = 0; // Counter for userIngredients for indexing values
@@ -111,6 +105,6 @@ public class Test {
             }
         }
     }
-
+    }
 }
 // Nalilito ako huhuhuhuhuh shit raming index
