@@ -70,126 +70,144 @@ public class MealBuddy {
                     "Step 1: Boil the rice in about 3 cups of water until soft. \nStep 2: Add the tablea and stir until melted. \nStep 3: Simmer until thick, then add sugar. \nStep 4: Pour milk on top. Serve warm.\n" // Champorado
             };
 
-            System.out.println("Welcome to Our Meal Suggestion App!");
+            System.out.println("Welcome to Our Meal Suggestion System!");
             System.out.println("Created by: Group 1");
-            System.out.println("Created Using: Java, Github, and Visual Studio Code");
-            System.out.println("Members: Gile, Jeorge, Jude,  Adrian, and Adrian/Vargas");
+            System.out.println("");
+            System.out.println("Created Using:");
+            System.out.println("Programming Language: Java");
+            System.out.println("IDE: Visual Studio Code");
+            System.out.println("Service Used: GitHub");
+            System.out.println("Contributors: Gile, Jeorge, Jude,  Adrian, and Adrian/Vargas");
             System.out.println("Created for boarding house students to help them with ther meal suggestions based on the ingredients they have.");
             while (menu) {
+                System.out.println("");
                 System.out.println("Would you like to proceed? (yes/no)");
                 String proceed = input.nextLine(); // Store the user's response in "proceed"
-                if (proceed.equalsIgnoreCase("yes")) { // If the user wants to proceed, set menu to false to exit the loop
-                                                      
+                if (proceed.equalsIgnoreCase("yes")) { // If the user wants to proceed, set menu to false to exit the
+                                                       // loop
+
                     menu = false;
-                } else if (proceed.equalsIgnoreCase("no")) { // If the user doesn't want to proceed, print a thank you  message and exit the program
-                                                             
+                } else if (proceed.equalsIgnoreCase("no")) { // If the user doesn't want to proceed, print a thank you
+                                                             // message and exit the program
+
                     System.out.println("Thank you for visiting our app! Have a great day!");
                     return; // Exit the program
                 } else {
-                    System.out.println("Invalid input! Please enter 'yes' or 'no'."); // Prompt the user again if the input is invalid
+                    System.out.println("Invalid input! Please enter 'yes' or 'no'."); // Prompt the user again if the
+                                                                                      // input is invalid
                 }
-                                                                                      
+            }
 
-                while (program) {
-                    System.out.println("");
-                    System.out.println("Please pick your ingredient:");
-                    String[] userIngredients = new String[500]; // Array to store the ingredients selected by the user
-                    int count = 0; // Counter for userIngredients for indexing values
+            while (program) {
+                System.out.println("");
+                System.out.println("Please pick your ingredient:");
+                String[] userIngredients = new String[500]; // Array to store the ingredients selected by the user
+                int count = 0; // Counter for userIngredients for indexing values
 
-                    for (int i = 0; i < ingredients.length; i++) { // Prints out the ingredients from the array
-                        System.out.println(i + ". " + ingredients[i]);
+                for (int i = 0; i < ingredients.length; i++) { // Prints out the ingredients from the array
+                    System.out.println(i + ". " + ingredients[i]);
+                }
+
+                int choice = 0;
+                while (true) {
+                    System.out.print("Pick a number (-1 to finish): "); // Input -1 to exit the loop
+                    if (input.hasNextInt()) { // Check if the input is an integer
+                        choice = input.nextInt(); // Read the integer input
+                        input.nextLine(); // Consume the newline character left by nextInt()
+                    } else {
+                        System.out.println("Invalid input! Please enter a number.");
+                        input.next(); // Clears the invalid input from the scanner buffer
+                        continue; // Prompt the user again
                     }
 
-                    int choice = 0;
-                    while (true) {
-                        System.out.print("Pick a number (-1 to finish): "); // Input -1 to exit the loop
-                        if (input.hasNextInt()) { // Check if the input is an integer
-                            choice = input.nextInt(); // Read the integer input
-                            input.nextLine(); // Consume the newline character left by nextInt()
-                        } else {
-                            System.out.println("Invalid input! Please enter a number.");
-                            input.next(); // Clears the invalid input from the scanner buffer
-                            continue; // Prompt the user again
+                    if (choice == -1) { // If statement for checking if the user input is -1 to exit the loop and for checking if the user picked at least one ingredient
+                        if (count == 0) { // If startement for checking if the user picked at least one ingredient
+                            System.out.println("You did not pick any ingredient! Please pick at least one.");
+                            continue; // returns to the beginning of the loop to prompt the user again
                         }
-
-                        if (choice == -1) {
-                            break;
-                        }
-
-                        if (choice >= 0 && choice < ingredients.length) { // If statement for checking if "choice" less than the length of the ingredients array and greater than or equal to 0
-                                                                         
-                            userIngredients[count] = ingredients[choice]; // Stores the selected ingredient to
-                                                                          // userIngredients
-                            count++; // This moves the next user input to the next index of the "userIngredients"
-                                     // Array
-
-                            System.out.println("Ingredient added: " + "" + ingredients[choice]); // Prints out the
-                                                                                                 // selected
-                                                                                                 // ingredient
-
-                        } else {
-                            System.out.println("Invalid choice!");
-                        }
-
+                        break; // breaks out of the loop if the user picked at least one ingredient
                     }
 
-                    for (int i = 0; i < availableIngredients.length; i++) { // Loop through each dish's available
-                                                                            // ingredients
+                    if (count == userIngredients.length) { // array is full
+                        System.out.println("You have reached the maximum number of ingredients.");
+                        break;
+                    }
 
-                        boolean hasAllIngredients = true;
+                    if (choice >= 0 && choice < ingredients.length) { // If statement for checking if "choice" less than
+                                                                      // the length of the ingredients array and greater
+                                                                      // than or equal to 0
 
-                        for (int j = 0; j < availableIngredients[i].length; j++) { // Loop through each ingredient of
-                                                                                   // the
-                                                                                   // current dish
+                        userIngredients[count] = ingredients[choice]; // Stores the selected ingredient to
+                                                                      // userIngredients
+                        count++; // This moves the next user input to the next index of the "userIngredients"
+                                 // Array
 
-                            boolean found = false;
+                        System.out.println("Ingredient added: " + "" + ingredients[choice]); // Prints out the
+                                                                                             // selected
+                                                                                             // ingredient
 
-                            for (int c = 0; c < count; c++) { // Loop through the user's selected ingredients
+                    } else {
+                        System.out.println("Invalid choice!");
+                    }
 
-                                if (availableIngredients[i][j].equals(userIngredients[c])) { // Check if the current
-                                                                                             // dish's
-                                                                                             // ingredient is in the
-                                                                                             // user's
-                                                                                             // selected ingredients
+                }
 
-                                    found = true;
-                                    break;
-                                }
-                            }
+                for (int i = 0; i < availableIngredients.length; i++) { // Loop through each dish's available
+                                                                        // ingredients
 
-                            if (!found) { // If the current dish's ingredient is not found in the user's selected
-                                          // ingredients, set hasAllIngredients to false and break out of the loop
-                                hasAllIngredients = false;
+                    boolean hasAllIngredients = true;
+
+                    for (int j = 0; j < availableIngredients[i].length; j++) { // Loop through each ingredient of
+                                                                               // the
+                                                                               // current dish
+
+                        boolean found = false;
+
+                        for (int c = 0; c < count; c++) { // Loop through the user's selected ingredients
+
+                            if (availableIngredients[i][j].equals(userIngredients[c])) { // Check if the current
+                                                                                         // dish's
+                                                                                         // ingredient is in the
+                                                                                         // user's
+                                                                                         // selected ingredients
+
+                                found = true;
                                 break;
                             }
                         }
 
-                        if (hasAllIngredients) { // If the user has all the ingredients for the current dish, print the
-                                                 // dish
-                                                 // name and recipe
-                            System.out.println();
-                            System.out.println("You can make: " + dishes[i]); // Print the name of the dish
-                            System.out.println("Recipe: " + recipe[i]); // Print the recipe for the dish
-                            System.out.println();
+                        if (!found) { // If the current dish's ingredient is not found in the user's selected
+                                      // ingredients, set hasAllIngredients to false and break out of the loop
+                            hasAllIngredients = false;
+                            break;
                         }
-
                     }
 
-                    while (retry) {
-                        System.out.println("--------------------------------------------------");
-                        System.out.println("Would you like to try again? (yes/no)"); // Ask the user if they want to try
-                                                                                     // again
-                        String tryAgain = input.nextLine(); // Store the user's response in "tryAgain"
+                    if (hasAllIngredients) { // If the user has all the ingredients for the current dish, print the
+                                             // dish
+                                             // name and recipe
+                        System.out.println();
+                        System.out.println("You can make: " + dishes[i]); // Print the name of the dish
+                        System.out.println("Recipe: " + recipe[i]); // Print the recipe for the dish
+                        System.out.println();
+                    }
 
-                        if (tryAgain.equalsIgnoreCase("yes")) {
-                            break;
-                        } else if (tryAgain.equalsIgnoreCase("no")) {
-                            System.out.println();
-                            System.out.println("Thank You For Using Our App! ");
-                            System.out.println("Have A Great Day! ");
-                            retry = false; // Set retry to false to exit the loop
-                            program = false; // Set program to false to exit the outer loop
-                        }
+                }
+
+                while (retry) {
+                    System.out.println("--------------------------------------------------");
+                    System.out.println("Would you like to try again? (yes/no)"); // Ask the user if they want to try
+                                                                                 // again
+                    String tryAgain = input.nextLine(); // Store the user's response in "tryAgain"
+
+                    if (tryAgain.equalsIgnoreCase("yes")) {
+                        break;
+                    } else if (tryAgain.equalsIgnoreCase("no")) {
+                        System.out.println();
+                        System.out.println("Thank You For Using Our App! ");
+                        System.out.println("Have A Great Day! ");
+                        retry = false; // Set retry to false to exit the loop
+                        program = false; // Set program to false to exit the outer loop
                     }
                 }
             }
