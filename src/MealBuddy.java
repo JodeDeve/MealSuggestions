@@ -3,25 +3,23 @@ import java.util.Scanner;
 public class MealBuddy {
     public static void main(String[] args) {
 
-        try (Scanner input = new Scanner(System.in)) {
+        try (Scanner input = new Scanner(System.in)) { // Start of the Scanner codenamed "input"
 
             boolean retry = true;
             boolean program = true;
             boolean menu = true;
+            boolean foundany = false;
 
             String[] ingredients = { "Egg", "Tomato", "Onion", "Cooking Oil", "Salt", "Eggplant", "Garlic", "Rice",
                     "Chicken", "Vinegar", "Soy Sauce", "Pepper", "Bay Leaf", "Pork", "Corned Beef", "Sardines",
                     "Hotdog", "Ketchup", "Luncheon Meat", "Instant Noodles", "Calamansi", "Mung Beans", "Dried Fish",
-                    "Cabbage", "Ginger", "Fish Sauce", "Sinigang Mix", "Milk", "Tablea", "Sugar" }; // Array of
-                                                                                                    // ingredients
+                    "Cabbage", "Ginger", "Fish Sauce", "Sinigang Mix", "Milk", "Tablea", "Sugar" }; // Array of ingredients
 
-            String[] dishes = { "Egg Tomato Scramble", "Tortang Talong", "Egg Rice", "Chicken Adobo", "Pork Adobo", // Array
-                                                                                                                    // of
-                                                                                                                    // dishes
+            String[] dishes = { "Egg Tomato Scramble", "Tortang Talong", "Egg Rice", "Chicken Adobo", "Pork Adobo", // Array of dishes
                     "Corned Beef", "Sardines Meal", "HotSilog", "Luncheon Meat", "Pancit Canton", "Monggo", "Tuyo",
                     "Cabbage Veggie Meal", "Tinola", "Sinigang", "Champorado" };
-            String[][] availableIngredients = { // These are the ingredients needed for each dish, in the same order as
-                                                // the dishes array
+            String[][] availableIngredients = { // These are the ingredients needed for each dish, in the same order as the dishes array
+
                     { "Egg", "Tomato", "Onion", "Cooking Oil", "Salt" }, // Egg Tomato Scramble
                     { "Eggplant", "Egg", "Cooking Oil", "Salt" }, // Tortang Talong
                     { "Egg", "Rice", "Cooking Oil", "Salt", "Garlic" }, // Egg Rice
@@ -78,27 +76,24 @@ public class MealBuddy {
             System.out.println("IDE: Visual Studio Code");
             System.out.println("Service Used: GitHub");
             System.out.println("Contributors: Gile, Jeorge, Jude,  Adrian, and Adrian/Vargas");
-            System.out.println("Created for boarding house students to help them with ther meal suggestions based on the ingredients they have.");
-            while (menu) {
+            System.out.println("Created for boarding house students to help them with their meal suggestions based on the ingredients they have.");
+            while (menu) { // Start of "menu" loop
                 System.out.println("");
                 System.out.println("Would you like to proceed? (yes/no)");
                 String proceed = input.nextLine(); // Store the user's response in "proceed"
-                if (proceed.equalsIgnoreCase("yes")) { // If the user wants to proceed, set menu to false to exit the
-                                                       // loop
+                if (proceed.equalsIgnoreCase("yes")) { // If the user wants to proceed, set menu to false to exit the loop
 
                     menu = false;
-                } else if (proceed.equalsIgnoreCase("no")) { // If the user doesn't want to proceed, print a thank you
-                                                             // message and exit the program
+                } else if (proceed.equalsIgnoreCase("no")) { // If the user doesn't want to proceed, print a thank you message and exit the program
 
                     System.out.println("Thank you for visiting our app! Have a great day!");
                     return; // Exit the program
                 } else {
-                    System.out.println("Invalid input! Please enter 'yes' or 'no'."); // Prompt the user again if the
-                                                                                      // input is invalid
+                    System.out.println("Invalid input! Please enter 'yes' or 'no'."); // Prompt the user again if the input is invalid
                 }
-            }
+            } // End of "menu" loop
 
-            while (program) {
+            while (program) { // Start of "program" loop
                 System.out.println("");
                 System.out.println("Please pick your ingredient:");
                 String[] userIngredients = new String[500]; // Array to store the ingredients selected by the user
@@ -133,18 +128,13 @@ public class MealBuddy {
                         break;
                     }
 
-                    if (choice >= 0 && choice < ingredients.length) { // If statement for checking if "choice" less than
-                                                                      // the length of the ingredients array and greater
-                                                                      // than or equal to 0
+                    if (choice >= 0 && choice < ingredients.length) { // If statement for checking if "choice" less than the length of the ingredients array and greater than or equal to 0 / Loop 1
+                                                                     
 
-                        userIngredients[count] = ingredients[choice]; // Stores the selected ingredient to
-                                                                      // userIngredients
-                        count++; // This moves the next user input to the next index of the "userIngredients"
-                                 // Array
+                        userIngredients[count] = ingredients[choice]; // Stores the selected ingredient to the "userIngredients" Array
+                        count++; // This moves the next user input to the next index of the "userIngredients" Array
 
-                        System.out.println("Ingredient added: " + "" + ingredients[choice]); // Prints out the
-                                                                                             // selected
-                                                                                             // ingredient
+                        System.out.println("Ingredient added: " + "" + ingredients[choice]); // Prints out the selected ingredient to the user
 
                     } else {
                         System.out.println("Invalid choice!");
@@ -152,66 +142,92 @@ public class MealBuddy {
 
                 }
 
-                for (int i = 0; i < availableIngredients.length; i++) { // Loop through each dish's available
-                                                                        // ingredients
+                for (int i = 0; i < availableIngredients.length; i++) { // Loop through each dish's available ingredients / Loop 1
 
                     boolean hasAllIngredients = true;
 
-                    for (int j = 0; j < availableIngredients[i].length; j++) { // Loop through each ingredient of
-                                                                               // the
-                                                                               // current dish
+                    for (int j = 0; j < availableIngredients[i].length; j++) { // Loop through each ingredient of the current dish in the 2d array / Loop 2
+                                                                              
 
                         boolean found = false;
 
-                        for (int c = 0; c < count; c++) { // Loop through the user's selected ingredients
+                        for (int c = 0; c < count; c++) { // Loop through the user's selected ingredients / Loop 3
 
-                            if (availableIngredients[i][j].equals(userIngredients[c])) { // Check if the current
-                                                                                         // dish's
-                                                                                         // ingredient is in the
-                                                                                         // user's
-                                                                                         // selected ingredients
-
+                            if (availableIngredients[i][j].equals(userIngredients[c])) { // Check if the user input matches the current dish's ingredient                                             
                                 found = true;
                                 break;
                             }
-                        }
+                        } // End of Loop 3
 
-                        if (!found) { // If the current dish's ingredient is not found in the user's selected
-                                      // ingredients, set hasAllIngredients to false and break out of the loop
+                        if (!found) { // If the current dish's ingredient is not found in the user's selected ingredients, set hasAllIngredients to false and break out of the loop
                             hasAllIngredients = false;
                             break;
                         }
-                    }
+                    } // End of Loop 2
 
-                    if (hasAllIngredients) { // If the user has all the ingredients for the current dish, print the
-                                             // dish
-                                             // name and recipe
+                    if (hasAllIngredients) { // If the user has all the ingredients for the current dish, print the dish and recipe
+                        foundany = true; // We found a dish, so change it to true
                         System.out.println();
                         System.out.println("You can make: " + dishes[i]); // Print the name of the dish
                         System.out.println("Recipe: " + recipe[i]); // Print the recipe for the dish
                         System.out.println();
+                    } 
+                } // End of Loop 1
+                if (!foundany) { // if statement for checking if it's still false after checking all dishes, nothing matched
+                    System.out.println("Sorry, no dishes match your ingredients. Try picking more!"); // Prints out this if the user input is 
                     }
 
-                }
-
-                while (retry) {
+                while (retry) { // Start of "retry" loop
                     System.out.println("--------------------------------------------------");
-                    System.out.println("Would you like to try again? (yes/no)"); // Ask the user if they want to try
-                                                                                 // again
+                    System.out.println("Would you like to try again? (yes/no)"); // Ask the user if they want to try again
                     String tryAgain = input.nextLine(); // Store the user's response in "tryAgain"
 
                     if (tryAgain.equalsIgnoreCase("yes")) {
                         break;
                     } else if (tryAgain.equalsIgnoreCase("no")) {
                         System.out.println();
-                        System.out.println("Thank You For Using Our App! ");
+                        System.out.println("Thank You For Using Our System! ");
                         System.out.println("Have A Great Day! ");
                         retry = false; // Set retry to false to exit the loop
                         program = false; // Set program to false to exit the outer loop
+                    } else {
+                        System.out.println();
+                        System.out.println("Pls Pick From Yes/No Only");
+                        System.out.println();
                     }
-                }
-            }
-        }
+                } // End of while "retry" loop
+            } // End of "program" loop
+        } // End of Scanner
     }
 }
 // Nalilito ako huhuhuhuhuh shit raming index
+ /*  
+ MATCHING LOOPS (1, 2, 3)
+  Loop 1: for (int i = 0; i < availableIngredients.length; i++)
+    - Goes through each dish, one by one (each row of the 2D array).
+    - i is also the index for dishes[i] and recipe[i].
+ 
+  Loop 2: for (int j = 0; j < availableIngredients[i].length; j++)
+    - Goes through each ingredient that the current dish needs.
+    - availableIngredients[i][j] = one needed ingredient.
+ 
+  Loop 3: for (int c = 0; c < count; c++)
+    - Goes through the ingredients the user picked, userIngredients[c].
+    - Checks if the needed ingredient matches one of them using .equals().
+    - If it matches: found = true, then break (stop searching).
+ 
+  After loop 3:
+    - if (!found): the needed ingredient is missing, so
+      hasAllIngredients = false and break (the dish is not possible).
+ 
+  After loop 2:
+    - if (hasAllIngredients): print dishes[i] and recipe[i].
+    - if (!foundany): prints if the user input is not enough to match a dish in the 2d array
+ 
+  Order of movement:
+    c is the fastest (finishes a full lap of the user's list first),
+    j is slower, i is the slowest.
+
+    shit ang sakit sa ulo mag track ng index sa 2d array hahah
+    sana maintindhan nyo kasi sakit sa ulo talaga mag track ahhhahaha
+ */
