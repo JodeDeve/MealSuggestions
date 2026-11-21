@@ -461,7 +461,7 @@ public class NewTestPrototype {
                 "Step 1: Slice the eggplant and fry it until lightly browned. \nStep 2: Add crushed garlic, soy sauce, vinegar, and a little water. \nStep 3: Simmer for 8 to 10 minutes. \nStep 4: Serve with rice.\n"
             };
 
-            String[] sources = {
+            String[] sources = { // sources
                 "Traditional Filipino home cooking", // Egg Tomato Scramble
                 "Traditional Filipino home cooking", // Tortang Talong
                 "Traditional Filipino home cooking", // Egg Rice
