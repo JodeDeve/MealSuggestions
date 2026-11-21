@@ -33,7 +33,7 @@ public class NewTestPrototype {
                 "Luncheon Meat",
                 "Instant Noodles",
                 "Calamansi",
-                "Monggo Beans",
+                "Mung Beans",
                 "Dried Fish",
                 "Cabbage",
                 "Ginger",
